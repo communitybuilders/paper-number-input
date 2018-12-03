@@ -196,6 +196,13 @@ class PaperNumberInput extends mixinBehaviors([PaperInputBehavior], PolymerEleme
       stepUpIcon: {
         type: String,
         value: 'add'
+      },
+      /**
+       * Whether to force the number into the min-max range
+       */
+      forceRange: {
+        type: Boolean,
+        value: false,
       }
     };
   }
@@ -219,6 +226,10 @@ class PaperNumberInput extends mixinBehaviors([PaperInputBehavior], PolymerEleme
   }
 
   setFallbackValue() {
+    if (this.fallbackValue === null) {
+      return;
+    }
+
     this.value = this.fallbackValue;
   }
 
@@ -262,6 +273,10 @@ class PaperNumberInput extends mixinBehaviors([PaperInputBehavior], PolymerEleme
   }
 
   _rangeValue(value) {
+    if (!this.forceRange) {
+      return;
+    }
+
     value = parseFloat(value);
 
     if (isNaN(value)) return;
