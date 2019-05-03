@@ -142,7 +142,7 @@ class PaperNumberInput extends mixinBehaviors([PaperInputBehavior], PolymerEleme
       <label hidden\$="[[!label]]" aria-hidden="true" for="input" slot="label">[[label]]</label>
 
       <iron-input bind-value="{{value}}" id="input" slot="input" maxlength\$="[[maxlength]]" allowed-pattern="[[allowedPattern]]" invalid="{{invalid}}" validator="[[validator]]">
-        <input id="nativeInput" aria-labelledby\$="[[_ariaLabelledBy]]" aria-describedby\$="[[_ariaDescribedBy]]" disabled\$="[[disabled]]" title\$="[[title]]" type\$="[[type]]" pattern\$="[[pattern]]" required\$="[[required]]" autocomplete\$="[[autocomplete]]" autofocus\$="[[autofocus]]" inputmode\$="[[inputmode]]" minlength\$="[[minlength]]" maxlength\$="[[maxlength]]" min\$="[[min]]" max\$="[[max]]" step\$="[[step]]" name\$="[[name]]" placeholder\$="[[placeholder]]" readonly\$="[[readonly]]" list\$="[[list]]" size\$="[[size]]" autocapitalize\$="[[autocapitalize]]" autocorrect\$="[[autocorrect]]" on-change="_onChange" on-input="_oninput" tabindex\$="[[tabIndex]]" autosave\$="[[autosave]]" results\$="[[results]]" accept\$="[[accept]]" multiple\$="[[multiple]]">
+        <input id="nativeInput" aria-labelledby\$="[[_ariaLabelledBy]]" aria-describedby\$="[[_ariaDescribedBy]]" disabled\$="[[disabled]]" title\$="[[title]]" type\$="[[type]]" pattern\$="[[pattern]]" required\$="[[required]]" autocomplete\$="[[autocomplete]]" autofocus\$="[[autofocus]]" inputmode\$="[[inputmode]]" minlength\$="[[minlength]]" maxlength\$="[[maxlength]]" min\$="[[min]]" max\$="[[max]]" step\$="[[step]]" name\$="[[name]]" placeholder\$="[[placeholder]]" readonly\$="[[readonly]]" list\$="[[list]]" size\$="[[size]]" autocapitalize\$="[[autocapitalize]]" autocorrect\$="[[autocorrect]]" on-change="_onChange" on-input="_oninput" on-keyup="_oninput" tabindex\$="[[tabIndex]]" autosave\$="[[autosave]]" results\$="[[results]]" accept\$="[[accept]]" multiple\$="[[multiple]]">
       </iron-input>
 
       <slot name="suffix" slot="suffix"></slot>
@@ -175,24 +175,24 @@ class PaperNumberInput extends mixinBehaviors([PaperInputBehavior], PolymerEleme
         readonly: true
       },
       /**
-      * Default fallback when value is not a number.
-      */
+       * Default fallback when value is not a number.
+       */
       fallbackValue: {
         type: Number,
         value: null
       },
       /**
-      * The icon key for the step down button. You will need to import an
-      * icon set for the icon to appear.
-      */
+       * The icon key for the step down button. You will need to import an
+       * icon set for the icon to appear.
+       */
       stepDownIcon: {
         type: String,
         value: 'remove'
       },
       /**
-      * The icon key for the step up button. You will need to import an
-      * icon set for the icon to appear.
-      */
+       * The icon key for the step up button. You will need to import an
+       * icon set for the icon to appear.
+       */
       stepUpIcon: {
         type: String,
         value: 'add'
@@ -218,9 +218,9 @@ class PaperNumberInput extends mixinBehaviors([PaperInputBehavior], PolymerEleme
   }
 
   /**
-  * Returns a reference to the focusable element. Overridden from PaperInputBehavior
-  * to correctly focus the native input.
-  */
+   * Returns a reference to the focusable element. Overridden from PaperInputBehavior
+   * to correctly focus the native input.
+   */
   get _focusableElement() {
     return this.inputElement._inputElement;
   }
@@ -279,7 +279,7 @@ class PaperNumberInput extends mixinBehaviors([PaperInputBehavior], PolymerEleme
 
   _rangeValue(value) {
     if (!this.forceRange) {
-      return;
+      return this.value = value;
     }
 
     value = parseFloat(value);
