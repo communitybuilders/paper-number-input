@@ -237,7 +237,10 @@ class PaperNumberInput extends mixinBehaviors([PaperInputBehavior], PolymerEleme
    *
    */
   stepUp() {
-    this.$.nativeInput.stepUp();
+    // stepUp on native inputs causes invalidStateError in MS Edge
+    const step = this.$.nativeInput.step || 1;
+    this.$.nativeInput.value = Number(this.$.nativeInput.value) + step;
+
     this.value = this.$.nativeInput.value;
   }
 
@@ -245,16 +248,18 @@ class PaperNumberInput extends mixinBehaviors([PaperInputBehavior], PolymerEleme
    *
    */
   stepDown() {
-    this.$.nativeInput.stepDown();
+    const step = this.$.nativeInput.step || 1;
+    this.$.nativeInput.value = Number(this.$.nativeInput.value) - step;
+
     this.value = this.$.nativeInput.value;
   }
 
   _computeStepDownButtonDisabled(value, min, disabled) {
-    return disabled || parseFloat(value) <= parseFloat(min);
+    return disabled || parseFloat(Number(value)) <= parseFloat(min);
   }
 
   _computeStepUpButtonDisabled(value, max, disabled) {
-    return disabled || parseFloat(value) >= parseFloat(max);
+    return disabled || parseFloat(Number(value)) >= parseFloat(max);
   }
 
   _onChange(e) {
