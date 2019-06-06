@@ -171,7 +171,7 @@ class PaperNumberInput extends mixinBehaviors([PaperInputBehavior], PolymerEleme
     return {
       type: {
         type: String,
-        value: 'number',
+        value: 'tel',
         readonly: true
       },
       /**
